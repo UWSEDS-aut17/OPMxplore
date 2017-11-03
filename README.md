@@ -1,20 +1,87 @@
-# Project Repository
+UWSEDS Project FALL 2017: Querying the PDB for membrane channel information
+Team: David, Sinduja, Felcy 
 
-This homework is done as a group. You will be creating your team repository.
+Google Doc version here:
+https://docs.google.com/document/d/1m4w0s52DFaE7JMSy4-kE9RmaTrE5Mm0xX00IIsKHyIA/edit
 
-You should do the following:
-- Create a repository for your team with a license and a .gitignore file.
-- Construct an initial README file that describes the problem you are addressing (but not necessarily how you will address it). Include at least one image and a link to another web page.
-- Create a Docs folder, and in that folder create a file named data.md. The document should have the following sections:
-  - Requirements. List the kind of information required to answer the questions described in the README file.
-  - Sources. List the data sets that you are considering using, their content, and their availability.
-  - Evaluation. The core part of this section is a table that analyzes the choice of data. The columns of the table are data sets described in the "Data" section. The rows are requirements of the data based on the questions you want to answer. You should complete the cells in the table.
-  
-Each person in the team should make at least one commit to the repository.
+Upcoming Events:
+Standup - 11/3 - Present on current status of project (<1min)
+Technology review - 11/15 - groups will present in round-robin fashion.
 
-Rubric. Items 1-4 are group grades. Item 5 is an individual grade.
-1. Created repository with all team members as collaborators, and README file describes the questions addressed by the project. (1 pt)
-2. data.md has a Requirements section with appropriate content. (1 pt)
-3. data.md has a Sources section with appropriate content. (1 pt)
-4. data.md has a Evaluation section with appropriate content. (1 pt)
-5. You made a commit to the repository. (1 pt)
+
+Pick your Data : RCSB - PDB database of proteins
+Define the problem (determine type of project and questions of interest):  
+teaching/exploration tool for channel proteins from the protein data bank
+Incorporate existing tools and stitch them together into a unified user interface.  Allow a user to search the PDB database for specific patterns, and visualize the structures, and do analysis on the amino acid and structural information within a set of PDB’s found by search criteria 
+Write the Functional Specification:
+Who will use it?
+Protein/peptide researchers with some basic understanding of python scripting
+What information might users want?
+Ex: “What is the statistical amino acid contents and secondary structures of membrane proteins, grouped by inward-facing and outward-facing regions of a membrane pore (protein multimer embedded in cell membrane)”
+Use Cases - how will users interact with system?
+Users could use functions we will write (including documentation and examples), either in their own scripts or as part of a jupyter-notebook template
+Project dev:
+Explore PyPDB (a python package for pdb visualization)
+Write package for interacting with other relevant software (such as HOLE, dssp)
+Iterate on other ideas
+
+Short term deliverables: - 
+Access database **explore PyPDB pakage**
+Visualize membrane proteins in membrane plane – 3d pymol image **TOOLS**
+Plot sequence hydropathy plot, ** ANALYSES **
+secondary structure ** TOOLS **
+Match or frequency of fragment? ** COMPUTATION ** *maybe*
+HOLE API access for some data statistics **TOOLS**
+ 
+Goals
+Components
+Date
+-       Retrieve sequence data
+-       pyPDB (package for accessing pdb data)
+-        
+-       display 3d images
+-       pymol python tools
+ 
+-       plot hydropathy plot
+-       matplotlib, or gui style widget
+ 
+-       plot secondary structure
+-       use DSSP database
+ 
+-       frequency of fragment
+-       plotting package, computation funcitons
+ 
+-       API to HOLE
+-       ..?
+ 
+ 
+ 
+---
+ 
+ Resources: 
+HOLE: http://www.sciencedirect.com/science/article/pii/S026378559700009X
+http://www.holeprogram.org/
+
+
+Pypdb - API for searching the PDB database: can be used to perform advanced searches for PDB IDs matching various criteria, as well as to look up information associated with specific PDB IDs within Python scripts, allowing it to supplement existing tools (i.e. Biopython) that are designed for manipulating .pdb files.
+https://github.com/williamgilpin/pypdb
+
+Biopandas: Python tool to convert PDB and MOL2 files into in pandas DataFrames
+https://github.com/rasbt/biopandas
+
+Ipymol: Interface to run Pymol visualization software using python, within jupyter notebook
+http://nbviewer.jupyter.org/github/cxhernandez/iPyMol/blob/master/examples/Example1.ipynb
+
+https://omictools.com/protein-channel-detection-category
+specific to channels..and other software packages out there.
+a database for just channels from pdb
+https://webchemdev.ncbr.muni.cz/ChannelsDB/
+
+"Defined Secondary Structure of Proteins"
+http://swift.cmbi.ru.nl/gv/dssp/
+
+"VPLG -- The Visualization of Protein-Ligand Graphs"
+https://sourceforge.net/projects/vplg/
+
+
+
