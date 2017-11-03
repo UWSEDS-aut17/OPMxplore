@@ -15,8 +15,20 @@ https://help.github.com/articles/basic-writing-and-formatting-syntax/
    You should complete the cells in the table.
  
 # Data Requirements:
+Example:
  | Header1 | Header2 |
  | --- | --- |
  | Data1 | Data2 |
+ 
+  
+| Goals | Components | Date
+| --- | --- | --- |
+| Retrieve sequence data | pyPDB (package for accessing pdb data)| |
+| display 3d images | pymol python tools | |
+| plot hydropathy plot | matplotlib, or gui style widget | |
+| plot secondary structure | use DSSP database |
+| frequency of fragment | plotting package, computation funcitons
+| API to HOLE | | |
+| ..?| | |
  
  
