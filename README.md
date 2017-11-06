@@ -40,6 +40,7 @@ RCSB - PDB database of proteins
 
 ### Short term deliverables: - 
  - Access database **explore PyPDB pakage**
+ - Access database **explore biopython for PDB access and parsing**
  - Visualize membrane proteins in membrane plane – 3d pymol image **TOOLS**
  - Plot sequence hydropathy plot, ** ANALYSES **
  - secondary structure ** TOOLS **
