@@ -1,5 +1,5 @@
 UWSEDS Project FALL 2017: Querying the PDB for membrane channel information
-Team: David, Sinduja, Felcy 
+Team: David, Sinduja, Felcy
 
 Google Doc version here:
 https://docs.google.com/document/d/1m4w0s52DFaE7JMSy4-kE9RmaTrE5Mm0xX00IIsKHyIA/edit
@@ -12,25 +12,28 @@ Technology review - 11/15 - groups will present in round-robin fashion.
 
 ### Pick your Data :
 RCSB - PDB database of proteins
+Nov 7 skm: Simplify data to include only polytopic alpha helical membrane proteins and polytopic beta barrell membrane proteins. See Database: OPM "Orientations of Proteins in Membranes"
+http://opm.phar.umich.edu/about.php
 
 ### Define the problem (determine type of project and questions of interest):  
  - teaching/exploration tool for channel proteins from the protein data bank
  - Incorporate existing tools and stitch them together into a unified user interface.
- - Allow a user to search the PDB database for specific patterns, 
-    and visualize the structures, and do analysis on the amino acid 
-    and structural information within a set of PDB’s found by search criteria 
+ - Allow a user to search the PDB database for specific patterns,
+    and visualize the structures, and do analysis on the amino acid
+    and structural information within a set of PDB’s found by search criteria
+ - Nov 7 skm: Defining a narrower problem - 1. What are the sequence similarities if any between membrane sequences of membrane proteins. 2. Cluster sequences by different features to check for correlation - alpha helices, beta sheets, inner membrane, outer membrane, archae, e coli.
 
 ### Write the Functional Specification:
 
 ### Who will use it?
  - Protein/peptide researchers with some basic understanding of python scripting
  - What information might users want?
- - Ex: “What is the statistical amino acid contents and secondary structures of membrane proteins, 
-   grouped by inward-facing and outward-facing regions of a membrane pore 
+ - Ex: “What is the statistical amino acid contents and secondary structures of membrane proteins,
+   grouped by inward-facing and outward-facing regions of a membrane pore
    (protein multimer embedded in cell membrane)”
 
 ### Use Cases - how will users interact with system?
- - Users could use functions we will write (including documentation and examples), 
+ - Users could use functions we will write (including documentation and examples),
    either in their own scripts or as part of a jupyter-notebook template
 
 ### Project development:
@@ -38,7 +41,7 @@ RCSB - PDB database of proteins
  - Write package for interacting with other relevant software (such as HOLE, dssp)
  - Iterate on other ideas
 
-### Short term deliverables: - 
+### Short term deliverables: -
  - Access database **explore PyPDB pakage**
  - Access database **explore biopython for PDB access and parsing**
  - Visualize membrane proteins in membrane plane – 3d pymol image **TOOLS**
@@ -46,7 +49,18 @@ RCSB - PDB database of proteins
  - secondary structure ** TOOLS **
  - Match or frequency of fragment? ** COMPUTATION ** *maybe*
  - HOLE API access for some data statistics **TOOLS**
- 
+
+### Nov7 skm Short Term Deliverables:-
+**DATA**
+- Access OPM Database
+- Build data tables of polytopic alpha helical membrane proteins, beta membrane proteins, membrane sequence exclusively for each.
+**TOOLS**
+- Eval & Choose between tools to visualize the proteins
+- Eval & Choose between tools for parsing
+**ANALYSIS**
+- Eval & choose algorithms for clustering
+
+
 | Goals | Components | Date
 | --- | --- | --- |
 | Retrieve sequence data | pyPDB (package for accessing pdb data)| |
@@ -56,8 +70,8 @@ RCSB - PDB database of proteins
 | frequency of fragment | plotting package, computation funcitons
 | API to HOLE | | |
 | ..?| | |
- 
-Resources: 
+
+Resources:
 HOLE: http://www.sciencedirect.com/science/article/pii/S026378559700009X
 http://www.holeprogram.org/
 
@@ -81,6 +95,3 @@ http://swift.cmbi.ru.nl/gv/dssp/
 
 "VPLG -- The Visualization of Protein-Ligand Graphs"
 https://sourceforge.net/projects/vplg/
-
-
-
