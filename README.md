@@ -1,9 +1,7 @@
 UWSEDS Project FALL 2017: Querying the PDB for membrane channel information
 Team: David, Sinduja, Felcy
 
-<iframe src='https://gfycat.com/ifr/BriefImprobableAnnashummingbird' frameborder='0' scrolling='no' width='3840' height='2400' allowfullscreen></iframe>
-
-#https://gfycat.com/gifs/detail/BriefImprobableAnnashummingbird
+<iframe src='https://gfycat.com/ifr/OrneryKnobbyDassierat' frameborder='0' scrolling='no' width='3840' height='2400' allowfullscreen></iframe>
 
 Google Doc version here:
 https://docs.google.com/document/d/1m4w0s52DFaE7JMSy4-kE9RmaTrE5Mm0xX00IIsKHyIA/edit
