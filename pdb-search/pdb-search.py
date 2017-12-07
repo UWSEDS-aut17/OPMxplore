@@ -104,7 +104,7 @@ def load_data():
     proteins['membrane_abbr'] = proteins.membrane_id.replace(membrane_abbr)
     proteins['family'] = proteins.family_id.replace(family_names)
     proteins['family_pfam'] = proteins.family_id.replace(family_pfams)
-    proteins['family_tcdbs'] = proteins.family_id.replace(family_tcdbs)
+    proteins['family_tcdb'] = proteins.family_id.replace(family_tcdbs)
     proteins['superfamily'] = proteins.family_id.replace(family_to_superfam).replace(superfamily_names)
     proteins['superfamily_tcdb'] = proteins.family_id.replace(family_to_superfam).replace(superfamily_tcdbs)
     proteins['superfamily_pfam'] = proteins.family_id.replace(family_to_superfam).replace(superfamily_pfams)
