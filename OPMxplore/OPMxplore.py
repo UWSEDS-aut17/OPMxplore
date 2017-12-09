@@ -11,50 +11,43 @@ import pandas as pd
 from pandasql import sqldf
 
 # PDB searching and parsing
-import pypdb as pdb
-from Bio.PDB import PDBParser 
-from Bio.PDB import MMCIFParser
-#import pprint
+# import pypdb as pdb
+# from Bio.PDB import PDBParser 
+# from Bio.PDB import MMCIFParser
+# import pprint
 
 
 # visualization stack [ipywidgets,nglview,matplotlib,seaborn,plotly]
-import nglview as nv
-from ipywidgets import interact
+# import nglview as nv
+# from ipywidgets import interact
 
-from plotly import __version__
-print (__version__) # requires version >= 1.9.0
+# from plotly import __version__
+# print (__version__) # requires version >= 1.9.0
 
-import plotly.offline as offline
+# import plotly.offline as offline
 # plotly.plotly.iplot() # online version
-offline.init_notebook_mode(connected=True)    # inline 
+# offline.init_notebook_mode(connected=True)    # inline 
 
-import plotly.graph_objs as go
-import cufflinks as cf
-cf.go_offline() # cufflinks offline
+# import plotly.graph_objs as go
+# import cufflinks as cf
+# cf.go_offline() # cufflinks offline
 
-import plotly.plotly as ply
-import plotly
-from plotly.widgets import GraphWidget as gw
+# import plotly.plotly as ply
+# import plotly
+# from plotly.widgets import GraphWidget as gw
 
 # from Bio.PDB import *
 
 # Special offline API Setup Info
 
 
-#wapper functions for pandasql queries
-def sql_query(query):
-    return sqldf(query, globals())
-
-def make_sql(table,selection="*", options=""):
-    return sql_query("SELECT "+selection+" FROM "+table+" "+options+";")
-
 def get_path(filename):
     """
     Locate the files in the appropriate directory relative to the current
     working directory. This assumes the current file is in
-    "~/example_notebooks/", or in "~/pdb-search/"
+    "~/example_notebooks/", or in "~/OPMxplore/"
     and that the data files are located in
-    "~/pdb-search/data/sql_export/".
+    "~/OPMxplore/data/sql_export/".
     
     os.path.join is used to provide cross-platform support.
     
@@ -163,7 +156,7 @@ def load_excell_data():
     http://opm.phar.umich.edu/OPM-2016-10-10.sql
     
     The data is was then converted to an excel file stored locally:
-    "pdb-search/data/OPM_data_from_MySQL.xlsx"
+    "OPMxplore/data/OPM_data_from_MySQL.xlsx"
     
     Returns:
     -------
@@ -190,5 +183,4 @@ def find_matches(query, df):
     # then convert the results to lower case
     search_results = [x.lower() for x in pdb.do_search(pdb.make_query(query))]
     return df[df['pdbid'].isin(search_results)]
-    
     
