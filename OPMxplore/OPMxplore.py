@@ -1,11 +1,52 @@
-import pandas as pd
-import numpy as np
-import pypdb as pdb
 import os
+import sys
+
+# scipy stack
+from matplotlib import pyplot as plt
+import seaborn as sns
+import numpy as np
+import pandas as pd
+
+# making sql queries of pd.Dataframes
+from pandasql import sqldf
+
+# PDB searching and parsing
+import pypdb as pdb
+from Bio.PDB import PDBParser 
+from Bio.PDB import MMCIFParser
+#import pprint
 
 
-#def get_file_path(filename):
-#    return os.path.dirname(os.getcwd())+"\\pdb-search\\data\\"+filename
+# visualization stack [ipywidgets,nglview,matplotlib,seaborn,plotly]
+import nglview as nv
+from ipywidgets import interact
+
+from plotly import __version__
+print (__version__) # requires version >= 1.9.0
+
+import plotly.offline as offline
+# plotly.plotly.iplot() # online version
+offline.init_notebook_mode(connected=True)    # inline 
+
+import plotly.graph_objs as go
+import cufflinks as cf
+cf.go_offline() # cufflinks offline
+
+import plotly.plotly as ply
+import plotly
+from plotly.widgets import GraphWidget as gw
+
+# from Bio.PDB import *
+
+# Special offline API Setup Info
+
+
+#wapper functions for pandasql queries
+def sql_query(query):
+    return sqldf(query, globals())
+
+def make_sql(table,selection="*", options=""):
+    return sql_query("SELECT "+selection+" FROM "+table+" "+options+";")
 
 def get_path(filename):
     """
@@ -23,7 +64,7 @@ def get_path(filename):
         The full path to the file
     """
     return os.path.join(os.path.dirname(os.getcwd()),
-                        'pdb-search',
+                        'OPMxplore',
                         'data',
                         'sql_export',
                         filename)

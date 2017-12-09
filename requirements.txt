@@ -6,3 +6,7 @@ pypdb
 nglview
 biopython
 biopandas
+sqlite3
+plotly
+seaborn
+ipywidgets
