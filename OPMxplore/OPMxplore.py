@@ -184,3 +184,29 @@ def find_matches(query, df):
     search_results = [x.lower() for x in pdb.do_search(pdb.make_query(query))]
     return df[df['pdbid'].isin(search_results)]
     
+def sql_search(df,selection="*", options=""):
+    """
+    Search a dataframe for matches to a given query using SQLite syntax,
+    
+    Keyword arguments:
+    df : pandas.DataFrame
+        The dataframe to search
+    selection : String
+        A string describing the subset of the dataframe to return 
+        (ex: SELECT "selection" )
+    options : String
+        a string representing any further qualifications to the SQL query, 
+        (ex: "WHERE name LIKE '%channel%'")
+    Returns:
+    -------
+    df : pandas.DataFrame
+        A subset of the provided dataframe, which only includes the
+        results of the SQL query
+    """
+    return sqldf("SELECT "+selection+" FROM df "+options+";",locals())
+    
+#def sql_query(query):
+#    return sqldf(query, globals())
+
+#def make_sql(table,selection="*", options=""):
+#    return sql_query("SELECT "+selection+" FROM "+table+" "+options+";")
