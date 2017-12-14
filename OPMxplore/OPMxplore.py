@@ -11,6 +11,7 @@ import pypdb as pdb
 # making sql queries of pd.Dataframes
 import pandasql
 
+
 class OPMqueryException(pandasql.PandaSQLException):
     pass
 
@@ -82,7 +83,8 @@ def load_data():
     # family id --> superfamily id
     # family id --> class id
     # family id --> type id
-    family_to_superfam = dict(classifications[['family_id', 'superfamily_id']].values)
+    family_to_superfam = dict(classifications[['family_id', 
+                                               'superfamily_id']].values)
     family_to_class = dict(classifications[['family_id', 'class_id']].values)
     family_to_type = dict(classifications[['family_id', 'type_id']].values)
 
@@ -114,8 +116,8 @@ def load_data():
     proteins['family_pfam'] = proteins.family_id.replace(family_pfams)
     proteins['family_tcdb'] = proteins.family_id.replace(family_tcdbs)
     proteins['superfamily'] = (proteins.family_id
-                              .replace(family_to_superfam)
-                              .replace(superfamily_names))
+                               .replace(family_to_superfam)
+                               .replace(superfamily_names))
     proteins['superfamily_tcdb'] = (proteins.family_id
                                     .replace(family_to_superfam)
                                     .replace(superfamily_tcdbs))
@@ -123,8 +125,8 @@ def load_data():
                                     .replace(family_to_superfam)
                                     .replace(superfamily_pfams))
     proteins['class'] = (proteins.family_id
-                        .replace(family_to_class)
-                        .replace(class_names))
+                         .replace(family_to_class)
+                         .replace(class_names))
     proteins['type'] = (proteins.family_id
                         .replace(family_to_type)
                         .replace(type_names))
@@ -170,10 +172,10 @@ def sql_search(df, selection="*", options=""):
         A subset of the provided dataframe, which only includes the
         results of the SQL query
     """
-    result = pandasql.sqldf("SELECT "+
-                            selection+
-                            " FROM df "+
-                            options+
+    result = pandasql.sqldf("SELECT " +
+                            selection +
+                            " FROM df " +
+                            options +
                             ";",
                             locals())
     if (len(result) == 0):
@@ -186,7 +188,7 @@ def add_query(df, name, past_queries):
     Append a dataframe object, with associated name to a query_dictionary.
     A query_dictionary is intended to save the result of every query as
     a dataframe object that is callable via it's key. The keys in the
-    dictionary can then be passed to ipywidgets as a list of strings for 
+    dictionary can then be passed to ipywidgets as a list of strings for
     dropdown menu.
     Keyword arguments:
     df : pandas.DataFrame
@@ -194,7 +196,7 @@ def add_query(df, name, past_queries):
     name: string
         a string describing the DataFrame
     past_queries : dictionary
-        A dictionary to append to in the form of 
+        A dictionary to append to in the form of
         key:value :: dataframe_id:dataframe
     Returns:
     -------
