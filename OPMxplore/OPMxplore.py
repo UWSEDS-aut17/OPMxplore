@@ -12,7 +12,7 @@ from pandasql import sqldf
 
 # PDB searching and parsing
 # import pypdb as pdb
-# from Bio.PDB import PDBParser 
+# from Bio.PDB import PDBParser
 # from Bio.PDB import MMCIFParser
 # import pprint
 
@@ -26,7 +26,7 @@ from pandasql import sqldf
 
 # import plotly.offline as offline
 # plotly.plotly.iplot() # online version
-# offline.init_notebook_mode(connected=True)    # inline 
+# offline.init_notebook_mode(connected=True)    # inline
 
 # import plotly.graph_objs as go
 # import cufflinks as cf
@@ -48,9 +48,9 @@ def get_path(filename):
     "~/example_notebooks/", or in "~/OPMxplore/"
     and that the data files are located in
     "~/OPMxplore/data/sql_export/".
-    
+
     os.path.join is used to provide cross-platform support.
-    
+
     Returns:
     -------
     path : string
@@ -70,14 +70,14 @@ def load_data():
     and the rest of the tables contain specific information about
     the various categories of proteins.  These are converted to dicts,
     and used to add the appropriate columns to the proteins dataframe
-    
+
     Returns:
     -------
     df : pandas.DataFrame
         The data from the OPM database, including protein types,
         classes, superfamilies, families, species, and localization
     """
-    
+
     # First we load all of the csv files into memory as pandas dataframes
     # proteins is the main table we are interested in
     proteins = pd.read_csv(get_path('protein.csv'), sep=';')
@@ -104,7 +104,7 @@ def load_data():
     family_names = dict(families[['id','name']].values)
     family_tcdbs = dict(families[['id','tcdb']].values)
     family_pfams = dict(families[['id','pfam']].values)
-    
+
     # family id --> superfamily id
     # family id --> class id
     # family id --> type id
@@ -118,7 +118,7 @@ def load_data():
     superfamily_names = dict(superfamilies[['id','name']].values)
     superfamily_tcdbs = dict(superfamilies[['id','tcdb']].values)
     superfamily_pfams = dict(superfamilies[['id','pfam']].values)
-    
+
     # class id --> class name
     # type id --> type name
     # species id --> species name
@@ -144,9 +144,9 @@ def load_data():
     proteins['superfamily_pfam'] = proteins.family_id.replace(family_to_superfam).replace(superfamily_pfams)
     proteins['class'] = proteins.family_id.replace(family_to_class).replace(class_names)
     proteins['type'] = proteins.family_id.replace(family_to_type).replace(type_names)
-    
+
     return proteins
-    
+
 # load the data from excel files located in this directory
 def load_excell_data():
     """
@@ -154,10 +154,10 @@ def load_excell_data():
     The protein data was downloaded from the OPM database
     as a MySQL dump file:
     http://opm.phar.umich.edu/OPM-2016-10-10.sql
-    
+
     The data is was then converted to an excel file stored locally:
     "OPMxplore/data/OPM_data_from_MySQL.xlsx"
-    
+
     Returns:
     -------
     df : pandas.DataFrame
@@ -172,7 +172,7 @@ def find_matches(query, df):
     then cross-reference the results with the dataframe provided,
     and return a subset of the dataframe with matching pdbid's.
     Assumes that the provided which contains a column called 'pdbid'
-    
+
     Returns:
     -------
     df : pandas.DataFrame
@@ -183,19 +183,19 @@ def find_matches(query, df):
     # then convert the results to lower case
     search_results = [x.lower() for x in pdb.do_search(pdb.make_query(query))]
     return df[df['pdbid'].isin(search_results)]
-    
+
 def sql_search(df,selection="*", options=""):
     """
     Search a dataframe for matches to a given query using SQLite syntax,
-    
+
     Keyword arguments:
     df : pandas.DataFrame
         The dataframe to search
     selection : String
-        A string describing the subset of the dataframe to return 
+        A string describing the subset of the dataframe to return
         (ex: SELECT "selection" )
     options : String
-        a string representing any further qualifications to the SQL query, 
+        a string representing any further qualifications to the SQL query,
         (ex: "WHERE name LIKE '%channel%'")
     Returns:
     -------
@@ -204,9 +204,33 @@ def sql_search(df,selection="*", options=""):
         results of the SQL query
     """
     return sqldf("SELECT "+selection+" FROM df "+options+";",locals())
-    
+
 #def sql_query(query):
 #    return sqldf(query, globals())
 
 #def make_sql(table,selection="*", options=""):
 #    return sql_query("SELECT "+selection+" FROM "+table+" "+options+";")
+
+
+def add_query(df,name,past_queries):
+    """
+    Append a dataframe object, with associated name to a query_dictionary.
+    A query_dictionary is intended to save the result of every query as
+    a dataframe object that is callable via it's key. The keys in the
+    dictionary can then be passed to ipywidgets as a list of strings for dropdown
+    menu.
+
+    Keyword arguments:
+    df : pandas.DataFrame
+        The dataframe to save
+    name: string
+        a string describing the DataFrame
+    past_queries : dictionary
+        A dictionary to append to in the form of key:value :: dataframe_id:dataframe
+    Returns:
+    -------
+    past_queries : dictionary
+        A dictionary in the form of key:value :: dataframe_id:dataframe
+    """
+    past_queries[name]=df
+    return past_queries
