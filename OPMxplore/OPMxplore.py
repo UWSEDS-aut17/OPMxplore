@@ -56,17 +56,8 @@ def get_path(filename):
     path : string
         The full path to the file
     """
-    if (filename == "" or 
-        filename == "\n"): 
-         return -1
-    try:
-        fp = open(os.path.join(os.path.dirname(os.getcwd()),
-                                               'data',
-                                               'sql_export',
-                                               filename))
-    except IOError as e:
-	     return -1   
     return os.path.join(os.path.dirname(os.getcwd()),
+                        'OPMxplore',
                         'data',
                         'sql_export',
                         filename)
@@ -169,10 +160,6 @@ def find_matches(query, df):
         A subset of the provided dataframe, which only includes the
         pdbid's which matched the query
     """
-    if (query == "" or 
-       (isinstance(query, int) == True) or
-       len(df) == 0): 
-          return -1
     # make a PDB database query and perform a search,
     # then convert the results to lower case
     search_results = [x.lower() for x in pdb.do_search(pdb.make_query(query))]
@@ -197,18 +184,12 @@ def sql_search(df,selection="*", options=""):
         A subset of the provided dataframe, which only includes the
         results of the SQL query
     """
-    if (len(df) == 0):
-        return -1
-    try:
-       sqldf("SELECT "+selection+" FROM df "+options+";",locals())
-    except DatabaseError as ex:
-       raise PandaSQLException(ex)
-    
-#def sql_query(query):
-#    return sqldf(query, globals())
+    result = sqldf("SELECT "+selection+" FROM df "+options+";",locals())
+    if (len(result) == 0):
+       raise PandaSQLException("The search string gave no results!")
+    else:
+        return result
 
-#def make_sql(table,selection="*", options=""):
-#    return sql_query("SELECT "+selection+" FROM "+table+" "+options+";")
 
 def add_query(df,name,past_queries):
     """
