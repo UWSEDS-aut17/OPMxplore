@@ -9,14 +9,14 @@ The tools in this module will help to
 
 2. visualize trends within 4 high level categories using the computed parameters: hydrophobic thickness, gibbs free energy, and tilt.
 
-### Quick Start
+# Quick Start
 
 Open the following url to see OPMxplore functions in action within a jupyter notebook rendered on nbviewer
 ~~~~
 link to nbviewer
 ~~~~
 
-### How to Run OPMxplore
+# How to Run OPMxplore
 
 1. Clone the github repo: 
 ~~~~
