@@ -39,18 +39,18 @@ jupyter nbextension enable --py widgetsnbextension
 * [OPM MySQL dataset](http://opm.phar.umich.edu/OPM-2016-10-10.sql)- download mySQL file.
 
 
-The[**Orientation of Membrane Protein (OPM)** database](http://opm.phar.umich.edu/about.php) is maintained by researchers from University of Michigan. They obtain the information of membrane proteins from PDB and compute the spatial arrangement of protein structures in the lipid bilayer. The OPM database has interesting features of membrane proteins such as **Localization of the membrane**, **Depth**, **Tilt angle**, and **Gibbs free energy** (how likely will the protein go into the membrane from solution).
-![](doc/opm.png | width=100)
+The [**Orientation of Membrane Protein (OPM)** database] (http://opm.phar.umich.edu/about.php) is maintained by researchers from University of Michigan. They obtain the information of membrane proteins from PDB and compute the spatial arrangement of protein structures in the lipid bilayer. The OPM database has interesting features of membrane proteins such as **Localization of the membrane**, **Depth**, **Tilt angle**, and **Gibbs free energy** (how likely will the protein go into the membrane from solution).
+![](doc/opm.png)
 
-
-#**Project Description**
 
 ### Video Demo
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8AhEcPVn3ac" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 
-**Authors** : David Alan Starkebaum, Sinduja Karl Marx and Felcy Selwyn. 
+### Authors  
+
+David Alan Starkebaum, Sinduja Karl Marx and Felcy Selwyn. 
 
 
 
