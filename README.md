@@ -41,7 +41,7 @@ The tools in this module will help to custom query membrane proteins and visuali
 
 ### **Visualization Demo**
 
-![Demo Link](https://youtu.be/8AhEcPVn3ac)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8AhEcPVn3ac" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
 
 **Authors** : David Alan Starkebaum, Sinduja Karl Marx and Felcy Selwyn. 
