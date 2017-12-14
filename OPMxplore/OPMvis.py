@@ -57,19 +57,22 @@ def stat_plot(df, xvar, yvar, title):
     sns.set_style('whitegrid')
     fig, ax = plt.subplots()
     fig.set_size_inches(15, 8)
-    # get data
-    df_inp = df
     # Create violin plot
     ax1 = sns.violinplot(x=xvar,
                          y=yvar,
-                         data=df_inp,
+                         data=df,
                          saturation=0.5,
                          inner='box',  # Remove the bars inside the violins
                          ax=ax)
 
-    ax1 = sns.swarmplot(x=xvar, y=yvar, data=df, alpha='0.5', color='k')
+    ax1 = sns.swarmplot(x=xvar,
+                        y=yvar,
+                        data=df,
+                        alpha='0.5',
+                        color='k')
     # Set title with matplotlib
     plt.title(title)
+    return ax1
 
 
 def brill_3d(high_type, df, x, y, z):

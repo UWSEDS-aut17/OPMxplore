@@ -11,7 +11,7 @@ The tools in this module will help to
 # Quick Start
 Open the following url to see OPMxplore functions in action within a jupyter notebook rendered on nbviewer
 ~~~~
-link to nbviewer
+link to notebook: https://github.com/UWSEDS-aut17/OPMxplore/blob/master/examples/opm_explore_tutorial_1.ipynb
 ~~~~
 
 

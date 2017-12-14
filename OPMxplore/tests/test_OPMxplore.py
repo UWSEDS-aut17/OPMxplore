@@ -1,67 +1,119 @@
 from nose import with_setup # optional
-import sys 
+import sys
+import os
 from types import *
-sys.path.append('..')
-import OPMxplore 
+sys.path.append(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))
+import OPMxplore.OPMxplore as opm
 import pandas as pd
+import unittest
+
+class TestOPMxplore(unittest.TestCase):
  
-class TestOPMxplore:
- 
-    def test_getpath(self):
-        print 'test_getpath("")  <======== tests get_path function with empty string'
-        test_path = OPMxplore.get_path("")
-        assert (isinstance(test_path, str) == False), "get_path returned string instead of error (-1) for null filename"
+    def test_get_path(self):
+        filename = 'protein.csv'
+        print('testing get_path(' + filename + ')')
+        test_path = opm.get_path(filename)
+        print('result = '+opm.get_path(filename))
+        expected_path = os.path.join(
+                                     os.path.dirname(
+                                     os.path.dirname(
+                                     os.path.realpath(__file__))),
+                                     'data',
+                                     'sql_export',
+                                     filename)
+        print('expected path = '+expected_path)
+        self.assertTrue(test_path == expected_path)
 
-        
-        print 'test_getpath("randomfilename")  <======== tests get_path function with nonexistent filename'
-        test_path = OPMxplore.get_path("randomfilename")
-        assert (isinstance(test_path, str) == False), 'file does NOT exist.'
-
-        print 'test_getpath("protein.csv")  <======== tests get_path function with nonexistent filename'
-        test_path = OPMxplore.get_path("protein.csv")
-        print OPMxplore.get_path("protein.csv")
-        assert (isinstance(test_path, str) == True), 'protein.csv exists'
-
-        print 'test_load_data()  <======== tests load_data function for empty data set'
-        test_data = OPMxplore.load_data()
+    def test_load_data(self):
+        print('testing load_data()')
+        test_data = opm.load_data()
         #print test_data
-        assert (len(test_data) != 0), "load_data returned empty data set"
- 
-        print 'test_load_data()  <======== tests load_data function for correct pandas dataframe'
-        df = pd.DataFrame(test_data)
-        if ('superfamily_tcdb' in df.columns and 
-           'family_pfam' in df.columns):
-           print "load_data returned valid dataframe"
+        expected_columns = ['id',
+                            'family_id',
+                            'species_id',
+                            'membrane_id',
+                            'pdbid',
+                            'name',
+                            'resolution',
+                            'topology',
+                            'thickness',
+                            'thicknesserror',
+                            'tilt',
+                            'tilterror',
+                            'gibbs',
+                            'tau',
+                            'numsubunits',
+                            'numstrands',
+                            'verification',
+                            'comments',
+                            'date_added',
+                            'species',
+                            'membrane',
+                            'membrane_abbr',
+                            'family',
+                            'family_pfam',
+                            'family_tcdb',
+                            'superfamily',
+                            'superfamily_tcdb',
+                            'superfamily_pfam',
+                            'class',
+                            'type']
 
-        print 'test_load_data()  <======== tests load_data function for invalid pandas dataframe'
-        test_data = OPMxplore.load_data()
-        df = pd.DataFrame(test_data)
-        if ('type1' in df.columns or 
-           'class1' in df.columns):
-           assert (False), "load_data returned invalid dataframe"
+        print('expected columns in the dataframe: ')
+        print(expected_columns)
+        print('result = ' + test_data.columns)
 
-        print 'test_find_matches("",[])  <======== tests find_matches function using empty data set and query'
-        test_data = OPMxplore.find_matches("",[])
-        assert (isinstance(test_data, int) == True), "find_matches worked on empty data set"
+        self.assertTrue(all(expected_columns == test_data.columns))
 
-        print 'test_find_matches("",[])  <======== tests find_matches function using empty query'
-        test_data = OPMxplore.find_matches("",[])
-        assert (isinstance(test_data, int) == True), "find_matches worked on empty data set"
+    def test_find_matches(self):
+        # construct a minimal dataframe containing 'pdbid' column
+        df = pd.DataFrame({'pdbid':['1xc0']})
+        print('testing find_matches() with simple dataframe')
+        # search for the pdbid
+        matches = opm.find_matches("1xc0", df)
+        # the result should be the same pdbid
+        self.assertTrue(matches.equals(df))
 
-        print 'test_sql_search([],"*","")  <======== tests sql_search function using empty data set'
-        test_data = OPMxplore.sql_search([],"*","")
-        assert (isinstance(test_data, int) == True), "load_data returned empty data set"
-        
+    def test_find_matches_key_error(self):
+        print('test_find_matches("",pd.DataFrame({"A":[]}))')
+        print('a dataframe lacking "pdbid" column')
+        # we get a key error because there is no column 'pdbid'
+        df_empty = pd.DataFrame({"A":[]})
+        self.assertRaises(KeyError, opm.find_matches, "", df_empty)
 
-        print 'test_add_query(df,"channel",past_queries)  <======== tests sql_search function using empty data set'
-        test_data = OPMxplore.load_data()
-        df = pd.DataFrame(test_data)
-        past_queries = {}
-        OPMxplore.add_query(df,"channel",past_queries)
-        if(past_queries):
-           print "data frame added to past queries"
-        else:
-           assert "add_query failed..." 
-        
+    # I am not sure that this test is really necessary
+    # since the function expects a dataframe, not a list
+    def test_find_matches_empty_list(self):
+        print('test_find_matches("", []))')
+        print('an empty data set and query')
+        # passing an empty list [] does not allow you to 
+        # lookup by column name: df[df['pdbid']
+        self.assertRaises(TypeError, opm.find_matches, "", [])
 
- 
+    def test_sql_search(self):
+        # construct a minimal dataframe containing 'pdbid' column
+        df = pd.DataFrame({'pdbid':['1xc0']})
+        print('testing sql_search(df)')
+        # search with no qualifications
+        matches = opm.sql_search(df)
+        # the result should be the same
+        self.assertTrue(matches.equals(df))
+
+    def test_sql_search_with_options(self):
+        # load the full dataframe
+        df = opm.load_data()
+        print('testing sql_search(df, "*", "WHERE membrane_id = 3")')
+        df_m3 = df[df['membrane_id']==3]
+        # search for all entries with membrane_id == 3
+        matches = opm.sql_search(df, "*", "WHERE membrane_id = 3")
+        # the result should be the same
+        self.assertTrue(df_m3.shape == matches.shape)
+
+    def test_add_query(self):
+        print('test_add_query(df,"channel",past_queries)')
+        df_a = pd.DataFrame({'pdbid':['1xc0']})
+        df_b = pd.DataFrame({'pdbid':['1g1z']})
+        start_query = dict([('df_a', df_a)])
+        end_query = opm.add_query(df_b, "df_b", start_query)
+        self.assertTrue(df_a.equals(end_query['df_a']) and
+                        df_b.equals(end_query['df_b']))
