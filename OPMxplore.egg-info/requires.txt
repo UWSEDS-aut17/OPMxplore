@@ -1,0 +1,10 @@
+numpy
+scipy
+matplotlib
+pandas
+pypdb
+nglview
+biopython
+biopandas
+pandasql
+plotly

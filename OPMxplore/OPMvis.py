@@ -72,34 +72,41 @@ def stat_plot(df, xvar, yvar, title):
                         color='k')
     # Set title with matplotlib
     plt.title(title)
-    return ax1
+    return ax
 
 
-def brill_3d(high_type, df, x, y, z):
+def brill_3d(high_type, df, xvar, yvar, zvar):
     """
     high_type: choose 'Transmembrane', 'Peptides', 'Monotopic/peripheral'
-    query_id: df_id
-    x:column name
-    y:column name
-    z:column name
+    df: Pandas DataFrame containing the data to plot
+    xvar:column name
+    yvar:column name
+    zvar:column name
     """
     selection = df[df['type'] == high_type]
-    selection.iplot(kind='scatter3d',
-                    x=x,
-                    y=y,
-                    z=z,
-                    size=15,
-                    categories='class',
-                    text='name',
-                    title='Brilliant 3D Protein Scatter',
-                    colors=['blue', 'pink', 'yellow'],
-                    width=0.5,
-                    margin=(0, 0, 0, 0),
-                    opacity=1,
-                    theme='white')
+    ax = selection.iplot(kind='scatter3d',
+                         x=xvar,
+                         y=yvar,
+                         z=zvar,
+                         size=15,
+                         categories='class',
+                         text='name',
+                         title='Brilliant 3D Protein Scatter',
+                         colors=['blue', 'pink', 'yellow'],
+                         width=0.5,
+                         margin=(0, 0, 0, 0),
+                         opacity=1,
+                         theme='white')
+    return ax
 
 
 def swarm_plot(df, xvar, yvar, title):
+    """
+    df: Pandas DataFrame containing the data to plot
+    xvar:column name
+    yvar:column name
+    zvar:column name
+    """
     # plot aesthetics
     sns.set()
     sns.set_style('whitegrid')
@@ -109,19 +116,21 @@ def swarm_plot(df, xvar, yvar, title):
     ax1 = sns.swarmplot(x=xvar, y=yvar, data=df, alpha='0.5', color='r')
     # Set title with matplotlib
     plt.title(title)
+    return ax
 
 
 def scatter_plot(df, category):
 
-    df.iplot(
-             kind='scatter',
-             mode='markers',
-             y='thickness',
-             x='gibbs',
-             text='pdbid',
-             xTitle='dG to fold or insert in membrane',
-             yTitle='Hydrophobic_Thickness',
-             theme='white',
-             categories=category,
-             colors=['blue', 'pink', 'yellow', 'green']
-             )
+    ax = df.iplot(
+                  kind='scatter',
+                  mode='markers',
+                  y='thickness',
+                  x='gibbs',
+                  text='pdbid',
+                  xTitle='dG to fold or insert in membrane',
+                  yTitle='Hydrophobic_Thickness',
+                  theme='white',
+                  categories=category,
+                  colors=['blue', 'pink', 'yellow', 'green']
+                  )
+    return ax

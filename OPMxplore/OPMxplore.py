@@ -83,7 +83,7 @@ def load_data():
     # family id --> superfamily id
     # family id --> class id
     # family id --> type id
-    family_to_superfam = dict(classifications[['family_id', 
+    family_to_superfam = dict(classifications[['family_id',
                                                'superfamily_id']].values)
     family_to_class = dict(classifications[['family_id', 'class_id']].values)
     family_to_type = dict(classifications[['family_id', 'type_id']].values)

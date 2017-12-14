@@ -1,0 +1,17 @@
+README.md
+OPMxplore/OPMvis.py
+OPMxplore/OPMxplore.py
+OPMxplore/__init__.py
+OPMxplore/version.py
+OPMxplore.egg-info/PKG-INFO
+OPMxplore.egg-info/SOURCES.txt
+OPMxplore.egg-info/dependency_links.txt
+OPMxplore.egg-info/requires.txt
+OPMxplore.egg-info/top_level.txt
+OPMxplore/data/opm-sqlite3.db
+OPMxplore/data/opm.sql
+OPMxplore/data/readme.txt
+OPMxplore/tests/__init__.py
+OPMxplore/tests/context.py
+OPMxplore/tests/test_OPMvis.py
+OPMxplore/tests/test_OPMxplore.py

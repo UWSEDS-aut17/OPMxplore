@@ -1,0 +1,64 @@
+Metadata-Version: 1.1
+Name: OPMxplore
+Version: 0.1.dev0
+Summary: OPMxplore: exploring membrane proteins
+Home-page: https://github.com/UWSEDS-aut17/OPMXplore
+Author: David Starkebaum
+Author-email: dasman@uw.edu
+License: MIT
+Description-Content-Type: UNKNOWN
+Description: 
+        
+        OPMxplore
+        ========
+        OPMxplore is a tool for analyzing membrane proteins from the
+        Orientations of Proteins in Membranes (OPM) database:
+        http://opm.phar.umich.edu/
+        
+        It allow users to perform custom queries of the OPM database.
+        It uses pypdb to search the RCSB proteins database, 
+        and cross-reference the results with the OPM database:
+        https://www.rcsb.org/pdb/home/home.do
+        https://github.com/williamgilpin/pypdb
+        
+        Once the desired proteins are identified, pdb-search provides tools to 
+        analyze and compare the results using interactive plotly graphs:
+        https://plot.ly/
+        
+        Furthermore, individual proteins can be visualized within a 
+        Jupyter-notebook using nglview:
+        https://github.com/arose/nglview
+        
+        To find out more about the project, please go to the repository README_:
+        
+        .. _README: https://github.com/UWSEDS-aut17/OPMxplore/blob/master/README.md
+        
+        License
+        =======
+        ``OPMxplore`` is licensed under the terms of the MIT license. See the file
+        "LICENSE" for information on the history of this software, terms & conditions
+        for usage, and a DISCLAIMER OF ALL WARRANTIES.
+        
+        All trademarks referenced herein are property of their respective holders.
+        
+        Copyright (c) 2017--, David Starkebaum, Felcy Selwyn, Sinduja Karl Marx, 
+        The University of Washington eScience Institute.
+        
+Platform: OS Independent
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Intended Audience :: Science/Research
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Classifier: Programming Language :: Python
+Classifier: Topic :: Scientific/Engineering
+Requires: numpy
+Requires: scipy
+Requires: matplotlib
+Requires: pandas
+Requires: pypdb
+Requires: nglview
+Requires: biopython
+Requires: biopandas
+Requires: pandasql
+Requires: plotly
