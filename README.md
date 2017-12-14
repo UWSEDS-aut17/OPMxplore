@@ -25,12 +25,15 @@ The tools in this module will help to custom query membrane proteins and visuali
 
 ### **Quick Start**
 
-- Clone the github repo: [https://github.com/UWSEDS-aut17/OPMxplore.git)
+- Clone the github repo: (https://github.com/UWSEDS-aut17/OPMxplore.git)
+
 - From the command line, navigate to the repo and run these commands to install all the requirements:
   - `pip install -r requirements.txt`
+
 -Enable widgets for visualization
   - `pip install ipywidgets
      jupyter nbextension enable --py widgetsnbextension`
+
 - Open Jupyter Notebook and open opm_demo.ipynb
  
 
