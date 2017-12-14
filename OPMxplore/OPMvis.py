@@ -3,28 +3,47 @@ import plotly.graph_objs as go
 import seaborn as sns
 from matplotlib import pyplot as plt
 
-def make_plotly_dict(df,x_col,y_col,z_col,hover,color_by,colorbar_title,chart_title):
-    trace1 = go.Scatter3d(
-        x=df[x_col],
-        y=df[y_col],
-        z=df[z_col],
-        text=df[hover],
-        mode='markers',
-        marker=dict(
-            color = df[color_by],
-            colorscale = 'Viridis',
-            colorbar = dict(title = colorbar_title),
-            line=dict(color='rgb(140, 140, 170)')
-        )
-    )
-
-    d=[trace1]
-    l=dict(height=700, width=1000, title=chart_title)
-    fig = dict(data=d, layout=l)
-    return fig
+# def make_plotly_dict(df,x_col,y_col,z_col,hover,color_by,colorbar_title,chart_title):
+#     trace1 = go.Scatter3d(
+#         x=df[x_col],
+#         y=df[y_col],
+#         z=df[z_col],
+#         text=df[hover],
+#         mode='markers',
+#         marker=dict(
+#             color = df[color_by],
+#             colorscale = 'Viridis',
+#             colorbar = dict(title = colorbar_title),
+#             line=dict(color='rgb(140, 140, 170)')
+#         )
+#     )
+#
+#     d=[trace1]
+#     l=dict(height=700, width=1000, title=chart_title)
+#     fig = dict(data=d, layout=l)
+#     return fig
 
 # plotting functions
 def stat_plot(df, xvar, yvar, title):
+    """
+    Plots ...
+
+    Keyword arguments:
+    df : pandas.DataFrame
+        The dataframe to search
+    xvar : String
+        A string describing the subset of the dataframe to return
+        (ex: SELECT "selection" )
+    yvar : String
+        a string representing any further qualifications to the SQL query,
+        (ex: "WHERE name LIKE '%channel%'")
+    title : string
+
+    Returns:
+    -------
+    Return value is a list of lines that were added to the figure object.
+    Rendered inline within jupyter notebook using magic %matplotlib inline
+    """
     # plot aesthetics
     sns.set()
     sns.set_style('whitegrid')
@@ -32,7 +51,7 @@ def stat_plot(df, xvar, yvar, title):
     fig.set_size_inches(15, 8)
     # get data
     df_inp = df
-    # Create violin plot    
+    # Create violin plot
     ax1 = sns.violinplot(x=xvar,
                          y=yvar,
                          data=df_inp,
@@ -47,7 +66,7 @@ def stat_plot(df, xvar, yvar, title):
 def brill_3d(high_type,df,x,y,z):
     """
     high_type: choose 'Transmembrane', 'Peptides', 'Monotopic/peripheral'
-    query_id: df_id 
+    query_id: df_id
     x:column name
     y:column name
     z:column name
@@ -60,7 +79,7 @@ def brill_3d(high_type,df,x,y,z):
                     size=15,
                     categories='class',
                     text='name',
-                    title='Brilliant 3D Protein Scatter', 
+                    title='Brilliant 3D Protein Scatter',
                     colors=['blue','pink','yellow'],
                     width=0.5,
                     margin=(0,0,0,0),
@@ -79,14 +98,14 @@ def swarm_plot(df, xvar, yvar, title):
     plt.title(title)
 
 def scatter_plot(df, category):
-    
+
     df.iplot(
             kind = 'scatter',
             mode = 'markers',
-            y = 'thickness', 
+            y = 'thickness',
              x = 'gibbs',
              text='pdbid',
              xTitle = 'dG to fold or insert in membrane',
              yTitle = 'Hydrophobic_Thickness',
              theme='white',categories=category, colors = ['blue','pink','yellow','green']
-             )    
+             )
