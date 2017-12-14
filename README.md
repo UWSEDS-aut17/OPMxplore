@@ -2,7 +2,9 @@
 
 This Python module was built for a quick and interactive exploration of the [OPM website](http://opm.phar.umich.edu/about.php). 
 The tools in this module will help to 
+
 1. custom query membrane proteins from the database and save query for future comparisions 
+
 2. visualize trends within 4 high level categories using the computed parameters: hydrophobic thickness, gibbs free energy, and tilt.
 
 ### Quick Start
@@ -39,7 +41,7 @@ jupyter nbextension enable --py widgetsnbextension
 * [OPM MySQL dataset](http://opm.phar.umich.edu/OPM-2016-10-10.sql)- download mySQL file.
 
 
-The [**Orientation of Membrane Protein (OPM)** database] (http://opm.phar.umich.edu/about.php) is maintained by researchers from University of Michigan. They obtain the information of membrane proteins from PDB and compute the spatial arrangement of protein structures in the lipid bilayer. The OPM database has interesting features of membrane proteins such as **Localization of the membrane**, **Depth**, **Tilt angle**, and **Gibbs free energy** (how likely will the protein go into the membrane from solution).
+The [**Orientation of Membrane Protein (OPM)** database](http://opm.phar.umich.edu/about.php) is maintained by researchers from University of Michigan. They obtain the information of membrane proteins from PDB and compute the spatial arrangement of protein structures in the lipid bilayer. The OPM database has interesting features of membrane proteins such as **Localization of the membrane**, **Depth**, **Tilt angle**, and **Gibbs free energy** (how likely will the protein go into the membrane from solution).
 ![](doc/opm.png)
 
 
