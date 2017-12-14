@@ -37,8 +37,8 @@ jupyter nbextension enable --py widgetsnbextension
  
 ### Where we get our data
 
-* [RCSB Protein Data Bank (PDB)](https://www.rcsb.org/pdb/home/home.do)- use PyPDB to query.
-* [OPM MySQL dataset](http://opm.phar.umich.edu/OPM-2016-10-10.sql)- download mySQL file.
+* [RCSB Protein Data Bank (PDB)](https://www.rcsb.org/pdb/home/home.do)
+* [OPM MySQL dataset](http://opm.phar.umich.edu/OPM-2016-10-10.sql)
 
 
 The [**Orientation of Membrane Protein (OPM)** database](http://opm.phar.umich.edu/about.php) is maintained by researchers from University of Michigan. They obtain the information of membrane proteins from PDB and compute the spatial arrangement of protein structures in the lipid bilayer. The OPM database has interesting features of membrane proteins such as **Localization of the membrane**, **Depth**, **Tilt angle**, and **Gibbs free energy** (how likely will the protein go into the membrane from solution).
