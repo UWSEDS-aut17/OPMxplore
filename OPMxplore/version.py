@@ -90,5 +90,5 @@ REQUIRES = ["numpy",
             "nglview", 
             "biopython", 
             "biopandas",
-            "pandasql"
+            "pandasql",
             "plotly"]
