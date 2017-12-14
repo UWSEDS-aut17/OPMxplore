@@ -46,6 +46,10 @@ The [Orientations of Proteins in Membranes (OPM) database](http://opm.phar.umich
 # Video Demo
 <iframe width="560" height="315" src="https://www.youtube.com/embed/8AhEcPVn3ac" frameborder="0" gesture="media" allow="encrypted-media" allowfullscreen></iframe>
 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=8AhEcPVn3ac
+" target="_blank"><img src="http://img.youtube.com/vi/8AhEcPVn3ac/0.jpg" 
+alt="IMAGE ALT TEXT HERE" width="240" height="180" border="10" /></a>
+
 
 # Authors  
 David Alan Starkebaum, Sinduja Karl Marx and Felcy Selwyn. 
