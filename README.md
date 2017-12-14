@@ -1,6 +1,8 @@
 # OPMxplore
 
-This Python module was built for a quick and interactive exploration of the [OPM website](http://opm.phar.umich.edu/about.php). 
+This Python module was built for a quick and interactive exploration of the [Orientations of Proteins in Membranes](http://opm.phar.umich.edu/about.php). 
+
+
 The tools in this module will help to 
 
 1. custom query membrane proteins from the database and save query for future comparisions 
